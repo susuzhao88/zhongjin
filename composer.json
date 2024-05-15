@@ -1,0 +1,23 @@
+{
+    "name": "susuzhao88/zhongjin",
+    "description": "中金支付",
+    "autoload": {
+        "psr-4": {
+            "Zhongjin\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sz"
+        }
+    ],
+    "require": {
+        "php":">=7.0.8 <=7.4",
+        "ext-curl":"*",
+        "ext-openssl":"*",
+        "symfony/console":"3.4"
+    },
+    "bin": [
+        "bin/zhongjin"
+    ]
+}
