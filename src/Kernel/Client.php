@@ -11,7 +11,7 @@ class Client{
     $this->app = $app;
   }
 
-  public function request(string $url){
+  public function request(string $url, $method){
 
   }
 }
