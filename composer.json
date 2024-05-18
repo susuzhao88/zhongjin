@@ -3,7 +3,7 @@
     "description": "中金支付",
     "autoload": {
         "psr-4": {
-            "Zhongjin\\": "src/"
+            "susuzhao88\\Zhongjin\\": "src/"
         }
     },
     "authors": [
@@ -15,7 +15,11 @@
         "php":">=7.0.8 <=7.4",
         "ext-curl":"*",
         "ext-openssl":"*",
-        "symfony/console":"3.4"
+        "ext-json": "*",
+        "symfony/console":"3.4",
+        "illuminate/support":"5.4",
+        "guzzlehttp/guzzle":"6.5.8",
+        "symfony/dependency-injection":"3.4"
     },
     "bin": [
         "bin/zhongjin"

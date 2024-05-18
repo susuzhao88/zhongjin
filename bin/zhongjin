@@ -3,7 +3,7 @@
 include $_composer_autoload_path ?? __DIR__ . '/../vendor/autoload.php';
  
 use Symfony\Component\Console\Application;
-use Zhongjin\Command\Install;
+use susuzhao88\Zhongjin\Command\Install;
 
 $application = new Application();
 
