@@ -34,12 +34,14 @@ final class Windows extends Contract{
   protected function sm2Verify($data, $sign)
   {
     $sm2_cer_path = $this->config->get('sm2_cer_path');
+    var_dump($sm2_cer_path);
     if (!$sm2_cer_path || !file_exists($sm2_cer_path)) {
       throw new Exception("sm2_cer_path 不存在");
     }
     $fp = fopen($sm2_cer_path, "r");
     $cert = fread($fp, 8192);
     fclose($fp);
+    var_dump($cert);
     $cert = str_replace(["-----BEGIN CERTIFICATE-----", "-----END CERTIFICATE-----"], "", $cert);
     try{
       $encrypt = new COM("CryptoKit.CryptoAgent.Server.Standard.x64.1", NULL, CP_UTF8);

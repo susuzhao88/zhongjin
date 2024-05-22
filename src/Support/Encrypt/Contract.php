@@ -15,7 +15,7 @@ abstract class Contract{
   public function __construct(array $config)
   {
     $this->config = new Config($config);
-    $this->checkConfig();
+    // $this->checkConfig();
   }
 
   protected function checkConfig()

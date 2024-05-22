@@ -42,4 +42,9 @@ class Encrypt{
       return 'unknown';
     }
   }
+
+  public function __call($name, $arguments)
+  {
+    return call_user_func_array([$this->encrypt, $name], $arguments);
+  }
 }

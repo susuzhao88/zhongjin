@@ -2,8 +2,10 @@
 namespace susuzhao88\Zhongjin;
 
 use susuzhao88\Zhongjin\Exceptions\Exception;
+use susuzhao88\Zhongjin\Kernel\Client;
 use susuzhao88\Zhongjin\Kernel\Config;
 use susuzhao88\Zhongjin\Kernel\Encrypt;
+use susuzhao88\Zhongjin\Kernel\Gateway;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
@@ -28,11 +30,14 @@ class Application extends ContainerBuilder{
   }
 
   protected function registerBase(){
-    $this->register('app', $this)->setSynthetic(true)->setPublic(true)->setAutowired(true);
-    $this->autowire(Config::class,Config::class)->addArgument($this->getConfig())->setPublic(true);
+    $this->setAlias('app', 'service_container');
+    $this->autowire(Config::class,Config::class)->addArgument($this->getConfig());
     $this->setAlias('config', Config::class);
-    $this->autowire(Encrypt::class, Encrypt::class)->addArgument(new Reference('config'))->setPublic(true);
+    $this->autowire(Encrypt::class, Encrypt::class)->addArgument(new Reference('config'));
     $this->setAlias('encrypt', Encrypt::class);
+    $this->autowire(Client::class, Client::class)->addArgument(new Reference('app'));
+    $this->setAlias('client', Client::class);
+    $this->autowire('gateway', Gateway::class)->addArgument(new Reference('app'));
   }
 
   public function __get($name)
